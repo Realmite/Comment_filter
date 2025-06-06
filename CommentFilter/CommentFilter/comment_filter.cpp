@@ -18,3 +18,14 @@ void reportError(const Error& error) {
     cerr << endl;
     exit(static_cast<int>(error.type));
 }
+
+bool readFromFile(const string& filename, string& content) {
+    ifstream inputFile(filename);
+    if (!inputFile)
+        return false;
+
+    stringstream buffer;
+    buffer << inputFile.rdbuf();
+    content = buffer.str();
+    return true;
+}
