@@ -29,3 +29,12 @@ bool readFromFile(const string& filename, string& content) {
     content = buffer.str();
     return true;
 }
+
+bool writeToFile(const string& filename, const string& content) {
+    ofstream outputFile(filename);
+    if (!outputFile)
+        return false;
+
+    outputFile << content;
+    return true;
+}
